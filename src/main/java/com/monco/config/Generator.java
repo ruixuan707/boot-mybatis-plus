@@ -1,6 +1,5 @@
 package com.monco.config;
 
-import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
@@ -12,7 +11,9 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Auther: monco
@@ -23,7 +24,7 @@ public class Generator {
 
     public static void main(String[] args) {
 
-        String projectPath = "E:/code/boot-mybatis-plus";
+        String projectPath = System.getProperty("user.dir");
         //1、全局配置
         GlobalConfig config = new GlobalConfig();
         config.setActiveRecord(true)//开启AR模式
@@ -36,12 +37,12 @@ public class Generator {
                 .setFileOverride(true)//第二次生成会把第一次生成的覆盖掉
                 .setIdType(IdType.AUTO)//主键策略
                 .setServiceName("I%sService")//生成的service接口名字首字母是否为I，这样设置就没有I
+                .setServiceImplName("%sServiceImpl")
                 .setBaseResultMap(true)//生成resultMap
                 .setBaseColumnList(true);//在xml中生成基础列
         //2、数据源配置
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
-        dataSourceConfig.setDbType(DbType.MYSQL)//数据库类型
-                .setDriverName("com.mysql.jdbc.Driver")
+        dataSourceConfig.setDriverName("com.mysql.jdbc.Driver")
                 .setUrl("jdbc:mysql://localhost:3306/boot_mybatis_plus?useUnicode=true&useSSL=false&characterEncoding=utf8")
                 .setUsername("root")
                 .setPassword("123456");
@@ -62,9 +63,10 @@ public class Generator {
 
         //4、包名策略配置
         PackageConfig packageConfig = new PackageConfig();
-        packageConfig.setParent("com.monco.user")//设置包名的parent
+        packageConfig.setParent("com.monco.staff")//设置包名的parent
                 .setMapper("mapper")
                 .setService("service")
+                .setServiceImpl("service.impl")
                 .setController("controller")
                 .setEntity("entity");
         //5、整合配置
@@ -95,6 +97,15 @@ public class Generator {
         injectionConfig.setFileOutConfigList(focList);
         autoGenerator.setCfg(injectionConfig);
         autoGenerator.setTemplateEngine(new FreemarkerTemplateEngine());
+
+        // 7、controller 模板
+        TemplateConfig templateConfig = new TemplateConfig();
+        templateConfig.setXml(null);
+        templateConfig.setController("/templatesMybatis/controller.java");
+        templateConfig.setService("/templatesMybatis/service.java");
+        templateConfig.setServiceImpl("/templatesMybatis/serviceImpl.java");
+        autoGenerator.setTemplate(templateConfig);
+
         //6、执行
         autoGenerator.execute();
     }

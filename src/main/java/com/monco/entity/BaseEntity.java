@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -21,11 +21,11 @@ import java.util.Date;
  */
 @Data
 @ApiModel(value = "基类对象", description = "基类")
-public class BaseEntity implements Serializable {
+public class BaseEntity<T> extends Model {
 
     private static final long serialVersionUID = 5175950932374337809L;
 
-    @TableId(value = "id",type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     @ApiModelProperty(value = "主键")
     private Long id;
 
