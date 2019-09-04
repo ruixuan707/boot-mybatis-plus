@@ -35,7 +35,7 @@ import java.util.List;
     }
 
     private QueryWrapper<${entity}> getQueryWrapper(${entity} ${table.entityPath}) {
-        return new QueryWrapper<${entity}>()
+        return new QueryWrapper<${entity}>();
     }
 }
 </#if>

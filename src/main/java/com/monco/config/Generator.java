@@ -53,13 +53,13 @@ public class Generator {
                         "create_date", "update_id", "update_date"}) // 写于父类中的公共字段
                 .setColumnNaming(NamingStrategy.underline_to_camel)
                 .setNaming(NamingStrategy.underline_to_camel)//下划线到驼峰的命名方式
-                .setTablePrefix("sys_")//表名前缀
+                .setTablePrefix("y_")//表名前缀
                 .setEntityLombokModel(true)//使用lombok
                 .setRestControllerStyle(true)
                 .setVersionFieldName("version")
                 .setLogicDeleteFieldName("deleted")
                 .setControllerMappingHyphenStyle(true)
-                .setInclude("sys_user");//逆向工程使用的表
+                .setInclude("y_user");//逆向工程使用的表
 
         //4、包名策略配置
         PackageConfig packageConfig = new PackageConfig();
