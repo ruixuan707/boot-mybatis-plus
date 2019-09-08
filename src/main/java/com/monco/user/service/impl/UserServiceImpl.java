@@ -22,7 +22,6 @@ import java.util.List;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
-
     @Resource
     private UserMapper userMapper;
 

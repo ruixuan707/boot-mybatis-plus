@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.monco.user.entity.User;
 import com.monco.user.service.IUserService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -30,5 +31,11 @@ public class UserController {
     @GetMapping("page")
     public IPage<User> userIPage() {
         return userService.getPage(new Page<User>().setSize(10).setCurrent(0), new User().setNickName("qq").setUsername("bb"));
+    }
+
+    @GetMapping("show")
+    @RequiresPermissions("user:show")
+    public String showUser() {
+        return "这是学生信息";
     }
 }

@@ -3,7 +3,7 @@
 <mapper namespace="com.monco.staff.mapper.UserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.monco.staff.entity.User">
+    <resultMap id="BaseResultMap" type="com.monco.user.entity.User">
     <result column="id" property="id" />
     <result column="deleted" property="deleted" />
     <result column="status" property="status" />
