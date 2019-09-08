@@ -40,5 +40,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     private QueryWrapper<User> getQueryWrapper(User user) {
         return new QueryWrapper<User>()
                 .eq("username", user.getUsername()).or(true).eq("username", user.getNickName());
+
     }
 }

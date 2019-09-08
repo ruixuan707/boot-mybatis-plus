@@ -1,4 +1,4 @@
-package com.monco.config;
+package com.monco.config.mybatis;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;

@@ -12,7 +12,7 @@ import com.baomidou.mybatisplus.annotation.EnumValue;
 public enum StatusEnum {
 
     NORMAL(1, "正常"),
-    UNUSUAL(0, "异常");
+    UNUSUAL(2, "异常");
 
     StatusEnum(int code, String description) {
         this.code = code;

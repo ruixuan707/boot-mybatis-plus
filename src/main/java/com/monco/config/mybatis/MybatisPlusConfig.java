@@ -1,4 +1,4 @@
-package com.monco.config;
+package com.monco.config.mybatis;
 
 import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;

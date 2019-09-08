@@ -1,4 +1,4 @@
-package com.monco.config;
+package com.monco.config.mybatis;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
