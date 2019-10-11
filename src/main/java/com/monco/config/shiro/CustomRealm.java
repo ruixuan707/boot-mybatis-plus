@@ -35,13 +35,11 @@ public class CustomRealm extends AuthorizingRealm {
 
     /**
      * 这里可以注入userService,为了方便演示，我就写死了帐号了密码
-     * private UserService userService;
      * <p>
      * 获取即将需要认证的信息
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        System.out.println("-------身份认证方法开始--------");
         String username = (String) authenticationToken.getPrincipal();
         String userPwd = new String((char[]) authenticationToken.getCredentials());
         //根据用户名从数据库获取密码
@@ -51,7 +49,6 @@ public class CustomRealm extends AuthorizingRealm {
             throw new AccountException("用户名不正确");
         }
         //交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配
-        System.out.println("-------身份认证方法结束--------");
         return new SimpleAuthenticationInfo(username, password, ByteSource.Util.bytes(salt), getName());
     }
 }
