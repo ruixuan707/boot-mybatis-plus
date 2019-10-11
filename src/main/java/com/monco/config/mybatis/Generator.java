@@ -27,7 +27,7 @@ public class Generator {
         String projectPath = System.getProperty("user.dir");
         //1、全局配置
         GlobalConfig config = new GlobalConfig();
-        config.setActiveRecord(true)//开启AR模式
+        config.setActiveRecord(false)//开启AR模式
                 .setAuthor("monco")//设置作者
                 //生成路径(一般都是生成在此项目的src/main/java下面)
                 .setOutputDir(projectPath + "/src/main/java")
@@ -36,6 +36,7 @@ public class Generator {
                 .setDateType(DateType.ONLY_DATE) // 指定时间类型为date
                 .setFileOverride(true)//第二次生成会把第一次生成的覆盖掉
                 .setIdType(IdType.AUTO)//主键策略
+                .setMapperName("%sMapper")
                 .setServiceName("I%sService")//生成的service接口名字首字母是否为I，这样设置就没有I
                 .setServiceImplName("%sServiceImpl")
                 .setBaseResultMap(true)//生成resultMap
@@ -48,22 +49,22 @@ public class Generator {
                 .setPassword("123456");
         //3、策略配置
         StrategyConfig strategyConfig = new StrategyConfig();
-        strategyConfig.setSuperEntityClass("com.monco.entity.BaseEntity") // 指定baseEntity
-                .setSuperEntityColumns(new String[]{"id", "status", "deleted", "create_id",
-                        "create_date", "update_id", "update_date"}) // 写于父类中的公共字段
-                .setColumnNaming(NamingStrategy.underline_to_camel)
-                .setNaming(NamingStrategy.underline_to_camel)//下划线到驼峰的命名方式
-                .setTablePrefix("y_")//表名前缀
-                .setEntityLombokModel(true)//使用lombok
-                .setRestControllerStyle(true)
-                .setVersionFieldName("version")
-                .setLogicDeleteFieldName("deleted")
-                .setControllerMappingHyphenStyle(true)
-                .setInclude("y_user");//逆向工程使用的表
+        strategyConfig.setSuperEntityClass("com.monco.entity.BaseEntity"); // 指定baseEntity
+        strategyConfig.setSuperEntityColumns(new String[]{"id", "data_status", "deleted", "create_id", "create_name",
+                "create_date", "update_id", "update_name", "update_date"}); // 写于父类中的公共字段
+        strategyConfig.setColumnNaming(NamingStrategy.underline_to_camel);
+        strategyConfig.setNaming(NamingStrategy.underline_to_camel);//下划线到驼峰的命名方式
+//        strategyConfig.setTablePrefix("");//表名前缀
+        strategyConfig.setEntityLombokModel(true);//使用lombok
+        strategyConfig.setRestControllerStyle(true);
+        strategyConfig.setVersionFieldName("version");
+        strategyConfig.setLogicDeleteFieldName("deleted");
+        strategyConfig.setControllerMappingHyphenStyle(true);
+        strategyConfig.setInclude("role");//逆向工程使用的表
 
         //4、包名策略配置
         PackageConfig packageConfig = new PackageConfig();
-        packageConfig.setParent("com.monco.staff")//设置包名的parent
+        packageConfig.setParent("com.monco")//设置包名的parent
                 .setMapper("mapper")
                 .setService("service")
                 .setServiceImpl("service.impl")

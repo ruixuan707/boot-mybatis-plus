@@ -10,6 +10,7 @@ import org.apache.shiro.util.ByteSource;
 
 import java.util.HashSet;
 import java.util.Set;
+
 /**
  * @ClassName CustomRealm
  * @Description
@@ -21,12 +22,14 @@ public class CustomRealm extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+        System.out.println("-------权限认证方法开始--------");
         String username = (String) SecurityUtils.getSubject().getPrincipal();
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         Set<String> stringSet = new HashSet<>();
-//        stringSet.add("user:show");
+        stringSet.add("user:show");
         stringSet.add("user:admin");
         info.setStringPermissions(stringSet);
+        System.out.println("-------权限认证方法结束--------");
         return info;
     }
 
@@ -38,19 +41,18 @@ public class CustomRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        System.out.println("-------身份认证方法--------");
-        String userName = (String) authenticationToken.getPrincipal();
+        System.out.println("-------身份认证方法开始--------");
+        String username = (String) authenticationToken.getPrincipal();
         String userPwd = new String((char[]) authenticationToken.getCredentials());
         //根据用户名从数据库获取密码
-        String password = "2415b95d3203ac901e287b76fcef640b";
-        if (userName == null) {
+        String password = "9ff322019ad2f4d46ddd3d159160fecd";
+        String salt = "/IVmqPUXl8G0gKhJf8WvkQ==";
+        if (username == null) {
             throw new AccountException("用户名不正确");
-        } else if (!userPwd.equals(password )) {
-            throw new AccountException("密码不正确");
         }
         //交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配
-        return new SimpleAuthenticationInfo(userName, password,
-                ByteSource.Util.bytes(userName + "salt"), getName());
+        System.out.println("-------身份认证方法结束--------");
+        return new SimpleAuthenticationInfo(username, password, ByteSource.Util.bytes(salt), getName());
     }
 }
 
