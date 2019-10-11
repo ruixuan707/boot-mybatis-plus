@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.monco.mapper.AuthorityMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.monco.entity.Authority">
+        <id column="id" property="id" />
+        <result column="parent_id" property="parentId" />
+        <result column="authority_name" property="authorityName" />
+        <result column="authority_code" property="authorityCode" />
+        <result column="authority_type" property="authorityType" />
+        <result column="menu_path" property="menuPath" />
+        <result column="sort" property="sort" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, parent_id, authority_name, authority_code, authority_type, menu_path, sort
+    </sql>
+
+</mapper>
