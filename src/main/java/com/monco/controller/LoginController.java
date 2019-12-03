@@ -1,10 +1,14 @@
 package com.monco.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.monco.common.response.ApiResult;
+import com.monco.entity.User;
 import com.monco.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.subject.Subject;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @Auther: monco
@@ -22,6 +27,9 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("login")
 public class LoginController {
+
+    @Resource
+    private IUserService userService;
 
     @PostMapping
     public ApiResult login(@RequestParam("username") String username, @RequestParam("password") String password) {

@@ -2,24 +2,23 @@ package com.monco.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.monco.entity.User;
 import com.monco.mapper.UserMapper;
 import com.monco.service.IUserService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
-
 /**
- * <p>
- * 用户表 服务实现类
- * </p>
- *
- * @author monco
- * @since 2019-10-11
- */
+* <p>
+    * 用户表 服务实现类
+    * </p>
+*
+* @author monco
+* @since 2019-10-16
+*/
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 

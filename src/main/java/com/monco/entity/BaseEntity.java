@@ -1,10 +1,6 @@
 package com.monco.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -34,7 +30,7 @@ public class BaseEntity extends Model {
 
     @TableField(value = "create_id", fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建人ID")
-    private String createId;
+    private Long createId;
 
     @TableField(value = "create_name", fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建人名称")
@@ -44,9 +40,9 @@ public class BaseEntity extends Model {
     @ApiModelProperty(value = "创建时间")
     private Date createDate;
 
-    @TableField(value = "update_name", fill = FieldFill.INSERT_UPDATE)
+    @TableField(value = "update_id", fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "修改人ID")
-    private String updateId;
+    private Long updateId;
 
     @TableField(value = "update_name", fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "修改人名称")
@@ -59,4 +55,8 @@ public class BaseEntity extends Model {
     @TableLogic
     @ApiModelProperty(value = "删除标志位")
     private Integer deleted;
+
+    @ApiModelProperty(value = "乐观锁")
+    @Version
+    private Long version;
 }

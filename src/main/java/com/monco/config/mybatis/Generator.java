@@ -11,9 +11,7 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Auther: monco
@@ -51,16 +49,18 @@ public class Generator {
         StrategyConfig strategyConfig = new StrategyConfig();
         strategyConfig.setSuperEntityClass("com.monco.entity.BaseEntity"); // 指定baseEntity
         strategyConfig.setSuperEntityColumns(new String[]{"id", "data_status", "deleted", "create_id", "create_name",
-                "create_date", "update_id", "update_name", "update_date"}); // 写于父类中的公共字段
+                "create_date", "update_id", "update_name", "update_date", "version"}); // 写于父类中的公共字段
+//        strategyConfig.setSuperEntityColumns(new String[]{"id", "data_status", "deleted", "create_name",
+//                "create_date", "update_name", "update_date"}); // 写于父类中的公共字段
         strategyConfig.setColumnNaming(NamingStrategy.underline_to_camel);
         strategyConfig.setNaming(NamingStrategy.underline_to_camel);//下划线到驼峰的命名方式
-//        strategyConfig.setTablePrefix("");//表名前缀
+        strategyConfig.setTablePrefix("t_");//表名前缀
         strategyConfig.setEntityLombokModel(true);//使用lombok
         strategyConfig.setRestControllerStyle(true);
         strategyConfig.setVersionFieldName("version");
         strategyConfig.setLogicDeleteFieldName("deleted");
         strategyConfig.setControllerMappingHyphenStyle(true);
-        strategyConfig.setInclude("role");//逆向工程使用的表
+        strategyConfig.setInclude("t_order");//逆向工程使用的表
 
         //4、包名策略配置
         PackageConfig packageConfig = new PackageConfig();

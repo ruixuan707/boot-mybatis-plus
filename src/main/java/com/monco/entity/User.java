@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author monco
- * @since 2019-10-11
+ * @since 2019-10-16
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -35,11 +35,7 @@ public class User extends BaseEntity {
     @ApiModelProperty(value = "密码")
     private String password;
 
-    @ApiModelProperty(value = "密钥")
-    private String securityKey;
-
-    @ApiModelProperty(value = "乐观锁")
-    @Version
-    private Long version;
+    @ApiModelProperty(value = "盐")
+    private String salt;
 
 }

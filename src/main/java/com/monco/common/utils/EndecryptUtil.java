@@ -13,11 +13,11 @@ import org.apache.shiro.crypto.hash.SimpleHash;
 import java.security.Key;
 
 /**
- * @Auther: monco
- * @Date: 2019/9/16 10:46
- * @Description: 加解密工具
+ * @author : monco
+ * @date : 2019/9/16 10:46
+ * @description : 加解密工具
  */
-public class EndecryptUtils {
+public class EndecryptUtil {
 
     /**
      * base64进制加密
@@ -78,10 +78,9 @@ public class EndecryptUtils {
         String salt = new SecureRandomNumberGenerator().nextBytes().toString(); //Shiro自带的工具类，生成盐
         int times = 2; //加密次数
         String algorithmName = "md5"; //算法名
-
         String encodedPassword = new SimpleHash(algorithmName, password, salt, times).toString();
-
         System.out.printf("原始密码是 %s , 盐是： %s, 运算次数是： %d, 运算出来的密文是：%s ", password, salt, times, encodedPassword);
+
 
     }
 }

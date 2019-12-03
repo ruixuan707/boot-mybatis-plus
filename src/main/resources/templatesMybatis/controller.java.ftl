@@ -98,5 +98,15 @@ public class ${table.controllerName} {
         ${table.entityPath}Service.removeById(id);
         return ApiResult.ok();
     }
+
+    /**
+     * 按照id获取单条记录
+     *
+     * @param id
+     * @return
+     */
+    public ApiResult getOne(@RequestParam Long id) {
+        return ApiResult.ok(${table.entityPath}Service.getById(id));
+    }
 }
 </#if>

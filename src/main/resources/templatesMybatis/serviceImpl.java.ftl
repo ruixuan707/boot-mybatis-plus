@@ -41,26 +41,8 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
     }
 
     private QueryWrapper<${entity}> getWrapper(${entity} ${table.entityPath}) {
-         QueryWrapper<${entity}> queryWrapper = new QueryWrapper<>();
-        if (${table.entityPath}.getId() != null) {
-            queryWrapper.eq("id", ${table.entityPath}.getId());
-        }
-        if (${table.entityPath}.getDataStatus() != null) {
-            queryWrapper.eq("data_status", ${table.entityPath}.getDataStatus());
-        }
-        if (${table.entityPath}.getCreateId() != null) {
-            queryWrapper.eq("create_id", ${table.entityPath}.getCreateId());
-        }
-        if (StringUtils.isNotBlank(${table.entityPath}.getCreateName())) {
-            queryWrapper.like("create_name", ${table.entityPath}.getCreateName());
-        }
-        if (${table.entityPath}.getUpdateId() != null) {
-            queryWrapper.eq("update_id", ${table.entityPath}.getUpdateId());
-        }
-        if (StringUtils.isNotBlank(${table.entityPath}.getUpdateName())) {
-            queryWrapper.like("update_name", ${table.entityPath}.getUpdateName());
-        }
-        return new QueryWrapper<>(${table.entityPath});
+        QueryWrapper<${entity}> queryWrapper = new QueryWrapper<>();
+        return queryWrapper;
     }
 }
 </#if>

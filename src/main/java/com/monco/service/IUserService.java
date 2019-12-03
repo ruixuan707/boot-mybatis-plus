@@ -1,18 +1,17 @@
 package com.monco.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.monco.entity.User;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
-
 /**
  * <p>
  * 用户表 服务类
  * </p>
  *
  * @author monco
- * @since 2019-10-11
+ * @since 2019-10-16
  */
 public interface IUserService extends IService<User> {
 
@@ -32,4 +31,5 @@ public interface IUserService extends IService<User> {
      * @return
      */
     IPage<User> getUserPage(IPage<User> page, User user);
+
 }

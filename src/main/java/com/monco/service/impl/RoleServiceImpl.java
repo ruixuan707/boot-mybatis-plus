@@ -36,7 +36,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
     }
 
     private QueryWrapper<Role> getWrapper(Role role) {
-         QueryWrapper<Role> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<Role> queryWrapper = new QueryWrapper<>();
         if (role.getId() != null) {
             queryWrapper.eq("id", role.getId());
         }
